@@ -1,0 +1,163 @@
+{
+  "total_tests": 25,
+  "passed_tests": 24,
+  "failed_tests": 1,
+  "success_rate": 96.0,
+  "test_results": [
+    {
+      "test_name": "Login with demo credentials",
+      "success": true,
+      "details": "Successfully authenticated",
+      "response_data": null
+    },
+    {
+      "test_name": "Login response contains user data",
+      "success": true,
+      "details": "",
+      "response_data": null
+    },
+    {
+      "test_name": "Invalid login rejection",
+      "success": true,
+      "details": "Should reject invalid credentials",
+      "response_data": null
+    },
+    {
+      "test_name": "Dashboard stats structure",
+      "success": true,
+      "details": "All required fields present",
+      "response_data": null
+    },
+    {
+      "test_name": "Dashboard stats data types",
+      "success": true,
+      "details": "All fields have correct data types",
+      "response_data": null
+    },
+    {
+      "test_name": "Get customers list",
+      "success": true,
+      "details": "Retrieved 21 customers",
+      "response_data": null
+    },
+    {
+      "test_name": "Create customer",
+      "success": true,
+      "details": "Customer created with ID: 43127fb0-3ca1-4556-9868-3fd56956d261",
+      "response_data": null
+    },
+    {
+      "test_name": "Customer data integrity",
+      "success": true,
+      "details": "Created customer data matches input",
+      "response_data": null
+    },
+    {
+      "test_name": "Customer appears in list",
+      "success": true,
+      "details": "New customer should appear in customers list",
+      "response_data": null
+    },
+    {
+      "test_name": "Get loans list",
+      "success": true,
+      "details": "Retrieved 7 loans",
+      "response_data": null
+    },
+    {
+      "test_name": "Create loan with multiple items",
+      "success": true,
+      "details": "Loan created with ID: 77111be9-b44b-4b18-8628-4008cabb1a83",
+      "response_data": null
+    },
+    {
+      "test_name": "Serial number generation",
+      "success": true,
+      "details": "Serial number: A157",
+      "response_data": null
+    },
+    {
+      "test_name": "Loan data integrity",
+      "success": true,
+      "details": "Created loan data matches input",
+      "response_data": null
+    },
+    {
+      "test_name": "Get specific loan",
+      "success": true,
+      "details": "Successfully retrieved loan by ID",
+      "response_data": null
+    },
+    {
+      "test_name": "Interest calculation",
+      "success": true,
+      "details": "Interest calculated: {'principal': 50000.0, 'interest': 0.0, 'total_amount': 50000.0, 'days': 0, 'interest_type': 'simple'}",
+      "response_data": null
+    },
+    {
+      "test_name": "Interest calculation structure",
+      "success": true,
+      "details": "All required fields present",
+      "response_data": null
+    },
+    {
+      "test_name": "Get payments list",
+      "success": true,
+      "details": "Retrieved 9 payments",
+      "response_data": null
+    },
+    {
+      "test_name": "Create payment",
+      "success": true,
+      "details": "Payment created with ID: 19b18ff6-2d95-4f12-af0b-420e13dfe9f3",
+      "response_data": null
+    },
+    {
+      "test_name": "Payment data integrity",
+      "success": true,
+      "details": "Created payment data is complete",
+      "response_data": null
+    },
+    {
+      "test_name": "Customer count updated",
+      "success": true,
+      "details": "Total customers: 22",
+      "response_data": null
+    },
+    {
+      "test_name": "Loan count updated",
+      "success": true,
+      "details": "Total active loans: 5",
+      "response_data": null
+    },
+    {
+      "test_name": "Cash in hand updated",
+      "success": true,
+      "details": "Cash in hand: 93511.0",
+      "response_data": null
+    },
+    {
+      "test_name": "Unauthorized access rejection",
+      "success": true,
+      "details": "Should reject requests without token",
+      "response_data": null
+    },
+    {
+      "test_name": "Invalid loan ID handling",
+      "success": true,
+      "details": "Should return 404 for invalid loan ID",
+      "response_data": null
+    },
+    {
+      "test_name": "Invalid customer data rejection",
+      "success": false,
+      "details": "Should reject invalid customer data",
+      "response_data": null
+    }
+  ],
+  "created_data": {
+    "customer_id": "43127fb0-3ca1-4556-9868-3fd56956d261",
+    "loan_id": "77111be9-b44b-4b18-8628-4008cabb1a83",
+    "payment_id": "19b18ff6-2d95-4f12-af0b-420e13dfe9f3"
+  }
+}

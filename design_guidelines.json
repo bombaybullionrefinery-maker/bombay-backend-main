@@ -1,0 +1,136 @@
+{
+  "identity": {
+    "name": "The Modern Vault",
+    "tone": "Professional, Secure, Precise, Valuable",
+    "archetype": "Swiss & High-Contrast (Structure) + Jewel (Accents)"
+  },
+  "typography": {
+    "font_family": {
+      "heading": "\"Manrope\", sans-serif",
+      "body": "\"Manrope\", sans-serif",
+      "mono": "\"JetBrains Mono\", monospace"
+    },
+    "import_url": "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');",
+    "scale": {
+      "h1": "text-4xl font-bold tracking-tight lg:text-5xl",
+      "h2": "text-3xl font-semibold tracking-tight",
+      "h3": "text-2xl font-semibold tracking-tight",
+      "p": "text-base leading-7 text-muted-foreground",
+      "small": "text-sm font-medium leading-none"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "#F8FAFC",
+      "foreground": "#0F172A",
+      "card": "#FFFFFF",
+      "card_foreground": "#0F172A",
+      "popover": "#FFFFFF",
+      "popover_foreground": "#0F172A",
+      "primary": "#0F172A",
+      "primary_foreground": "#F8FAFC",
+      "secondary": "#F1F5F9",
+      "secondary_foreground": "#0F172A",
+      "muted": "#F1F5F9",
+      "muted_foreground": "#64748B",
+      "accent": "#F1F5F9",
+      "accent_foreground": "#0F172A",
+      "destructive": "#EF4444",
+      "destructive_foreground": "#F8FAFC",
+      "border": "#E2E8F0",
+      "input": "#E2E8F0",
+      "ring": "#0F172A",
+      "brand_gold": "#C5A059",
+      "brand_silver": "#94A3B8",
+      "success": "#10B981",
+      "warning": "#F59E0B"
+    },
+    "usage": {
+      "primary_button": "bg-primary text-primary-foreground hover:bg-primary/90",
+      "secondary_button": "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+      "accent_element": "text-brand_gold",
+      "gold_badge": "bg-[#C5A059]/10 text-[#C5A059] border-[#C5A059]/20",
+      "silver_badge": "bg-[#94A3B8]/10 text-[#94A3B8] border-[#94A3B8]/20"
+    }
+  },
+  "layout": {
+    "container": "max-w-7xl mx-auto p-4 md:p-8",
+    "dashboard_grid": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6",
+    "spacing": {
+      "section_gap": "gap-8",
+      "card_padding": "p-6"
+    },
+    "bento_slots": {
+      "hero_metric": "col-span-1 md:col-span-2 lg:col-span-2 row-span-1",
+      "standard_card": "col-span-1",
+      "tall_list": "col-span-1 md:col-span-1 lg:col-span-1 row-span-2",
+      "wide_chart": "col-span-1 md:col-span-3 lg:col-span-3"
+    }
+  },
+  "components": {
+    "card": {
+      "style": "rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-200",
+      "header": "flex flex-col space-y-1.5 p-6",
+      "content": "p-6 pt-0"
+    },
+    "button": {
+      "base": "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+      "variants": {
+        "default": "bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2",
+        "gold": "bg-[#C5A059] text-white hover:bg-[#B08D45] h-10 px-4 py-2 shadow-sm",
+        "outline": "border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2",
+        "ghost": "hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+      }
+    },
+    "input": {
+      "style": "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    },
+    "table": {
+      "wrapper": "relative w-full overflow-auto rounded-md border",
+      "header": "w-full caption-bottom text-sm",
+      "row": "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "head_cell": "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
+      "cell": "p-4 align-middle [&:has([role=checkbox])]:pr-0"
+    }
+  },
+  "visual_enhancers": {
+    "glass_panel": "bg-white/70 backdrop-blur-xl border border-white/20 shadow-sm",
+    "metallic_gradient": "bg-gradient-to-br from-slate-100 to-slate-200",
+    "gold_gradient_text": "bg-clip-text text-transparent bg-gradient-to-r from-[#C5A059] to-[#E5C079]",
+    "micro_interactions": "active:scale-95 transition-transform duration-100"
+  },
+  "image_urls": {
+    "login_bg": "https://images.pexels.com/photos/20979926/pexels-photo-20979926.jpeg",
+    "dashboard_hero": "https://images.pexels.com/photos/8442335/pexels-photo-8442335.jpeg",
+    "placeholder_avatar": "https://ui.shadcn.com/avatars/01.png"
+  },
+  "instructions_to_main_agent": [
+    "1. IMPORT FONTS: Add the Manrope import to the top of /app/frontend/src/index.css immediately.",
+    "2. UPDATE TAILWIND: Update /app/frontend/tailwind.config.js to include the custom colors (brand_gold, brand_silver) in the theme.extend.colors section.",
+    "3. LAYOUT: Use the 'Bento Grid' strategy for the Dashboard. Do not create a boring list of cards. Mix sizes.",
+    "4. FORMS: For the Loan Creation, use a multi-step approach or a clean grid layout for the 'Item Details' to handle multiple items without clutter.",
+    "5. TABLES: Use the 'Table' component for Active Loans. Ensure columns are aligned correctly (numbers right-aligned).",
+    "6. AUTH: Use the 'login_bg' image for the Authentication page split layout (Image on Left/Right, Form on other side).",
+    "7. DATA-TESTID: Add data-testid to all inputs and buttons (e.g., 'login-email-input', 'create-loan-btn')."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯📚🎭🎬🎪🎉🎊🎁🎀🎂🍰🎈🎨🎰💰💵💳🏦💎🪙💸🤑📊📈📉💹🔢🏆🥇 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use sonner for toasts. Sonner component are located in /app/src/components/ui/sonner.tsx"
+  ]
+}

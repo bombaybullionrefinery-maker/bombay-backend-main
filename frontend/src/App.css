@@ -1,0 +1,81 @@
+.App {
+  min-height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Smooth transitions for interactive elements */
+.transition-button {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.transition-button:hover {
+  transform: translateY(-1px);
+}
+
+.transition-button:active {
+  transform: scale(0.98);
+}
+
+/* Glass morphism effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Metal themed elements */
+.gold-gradient {
+  background: linear-gradient(135deg, #C5A059 0%, #E5C079 100%);
+}
+
+.silver-gradient {
+  background: linear-gradient(135deg, #94A3B8 0%, #CBD5E1 100%);
+}
+
+.text-gold {
+  color: hsl(var(--brand-gold));
+}
+
+.text-silver {
+  color: hsl(var(--brand-silver));
+}
