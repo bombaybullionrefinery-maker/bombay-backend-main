@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -22,6 +22,45 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import axios from 'axios';
 
+const calculateTimeStats = (loans, payments, period) => {
+  const now = new Date();
+  let startDate;
+
+  switch (period) {
+    case 'daily':
+      startDate = new Date(now.setHours(0, 0, 0, 0));
+      break;
+    case 'monthly':
+      startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+      break;
+    case 'yearly':
+      startDate = new Date(now.getFullYear(), 0, 1);
+      break;
+    default:
+      return { loans: 0, payments: 0, amount: 0 };
+  }
+
+  const periodLoans = loans.filter(loan => new Date(loan.loan_date) >= startDate);
+  const periodPayments = payments.filter(payment => new Date(payment.payment_date) >= startDate);
+
+  return {
+    loans: periodLoans.length,
+    payments: periodPayments.length,
+    amount: periodPayments.reduce((sum, payment) => sum + payment.amount, 0)
+  };
+};
+
+const calculateTotalInterest = (loans) => {
+  return loans
+    .filter(loan => loan.status === 'active')
+    .reduce((total, loan) => {
+      const daysDiff = (new Date() - new Date(loan.loan_date)) / (1000 * 60 * 60 * 24);
+      const monthlyRate = 0.02; // Assume 2% monthly
+      const months = daysDiff / 30;
+      return total + (loan.principal_amount * monthlyRate * months);
+    }, 0);
+};
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
@@ -29,26 +68,7 @@ const Dashboard = () => {
   const [timeFilter, setTimeFilter] = useState('all'); // daily, monthly, yearly, all
   const [realTimeCashInHand, setRealTimeCashInHand] = useState(0);
 
-  useEffect(() => {
-    fetchDashboardData();
-    
-    // Load real-time cash in hand
-    const savedCashInHand = parseFloat(localStorage.getItem('cashInHand') || '0');
-    setRealTimeCashInHand(savedCashInHand);
-    
-    // Listen for cash in hand updates
-    const handleCashUpdate = (event) => {
-      setRealTimeCashInHand(event.detail.newAmount);
-    };
-    
-    window.addEventListener('cashInHandUpdated', handleCashUpdate);
-    
-    return () => {
-      window.removeEventListener('cashInHandUpdated', handleCashUpdate);
-    };
-  }, [timeFilter]);
-
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = useCallback(async () => {
     try {
       const [dashboardResponse, loansResponse, paymentsResponse] = await Promise.all([
         axios.get('/dashboard'),
@@ -102,47 +122,26 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const calculateTimeStats = (loans, payments, period) => {
-    const now = new Date();
-    let startDate;
+  useEffect(() => {
+    fetchDashboardData();
     
-    switch (period) {
-      case 'daily':
-        startDate = new Date(now.setHours(0, 0, 0, 0));
-        break;
-      case 'monthly':
-        startDate = new Date(now.getFullYear(), now.getMonth(), 1);
-        break;
-      case 'yearly':
-        startDate = new Date(now.getFullYear(), 0, 1);
-        break;
-      default:
-        return { loans: 0, payments: 0, amount: 0 };
-    }
+    // Load real-time cash in hand
+    const savedCashInHand = parseFloat(localStorage.getItem('cashInHand') || '0');
+    setRealTimeCashInHand(savedCashInHand);
     
-    const periodLoans = loans.filter(loan => new Date(loan.loan_date) >= startDate);
-    const periodPayments = payments.filter(payment => new Date(payment.payment_date) >= startDate);
-    
-    return {
-      loans: periodLoans.length,
-      payments: periodPayments.length,
-      amount: periodPayments.reduce((sum, payment) => sum + payment.amount, 0)
+    // Listen for cash in hand updates
+    const handleCashUpdate = (event) => {
+      setRealTimeCashInHand(event.detail.newAmount);
     };
-  };
-
-  const calculateTotalInterest = (loans) => {
-    // Simplified interest calculation - in real implementation, this would be more complex
-    return loans
-      .filter(loan => loan.status === 'active')
-      .reduce((total, loan) => {
-        const daysDiff = (new Date() - new Date(loan.loan_date)) / (1000 * 60 * 60 * 24);
-        const monthlyRate = 0.02; // Assume 2% monthly
-        const months = daysDiff / 30;
-        return total + (loan.principal_amount * monthlyRate * months);
-      }, 0);
-  };
+    
+    window.addEventListener('cashInHandUpdated', handleCashUpdate);
+    
+    return () => {
+      window.removeEventListener('cashInHandUpdated', handleCashUpdate);
+    };
+  }, [fetchDashboardData, timeFilter]);
 
   if (loading) {
     return (
